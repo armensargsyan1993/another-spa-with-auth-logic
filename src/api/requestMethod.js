@@ -24,7 +24,9 @@ const axiosInstance = axios.create({
 })
 
 const getAllBootCamps = () => {
-    return axiosInstance.get(GET__ALL__BOOT__CAMPS__URL).then(res => res.data)
+    return axiosInstance.get(GET__ALL__BOOT__CAMPS__URL)
+    .then(res => res.data)
+    .catch(err => Promise.reject(err))
 }
 
 const register = (payload) => {
@@ -41,6 +43,7 @@ const login = (payload) => {
         ...payload
     }).then(res => {
         localStorage.setItem('token',res.data.token)
+        return res.data.success
     })
 }
 

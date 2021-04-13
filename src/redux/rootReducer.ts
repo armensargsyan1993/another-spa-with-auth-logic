@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import { GetActionsTypes, ThunkType } from "..";
+import { ThunkType } from "..";
 import { authMeActions } from "./authMeReducer/authMeActions";
 import { authMeReducer } from "./authMeReducer/authMeReducer";
-import { bootcampsReducer } from './bootcampsReducer/bootcampsReducer';
-import { loginReset } from "./loginReducer/loginActions";
+import { bootCampsReducer } from "./bootCampsReducer/bootCampsReducer";
+import { loginActions } from "./loginReducer/loginActions";
 import { loginReducer } from "./loginReducer/loginReducer";
 import { logoutReducer } from "./logoutReducer/logoutReducer";
 import { registerReset } from "./registerReducer/registerActions";
@@ -13,7 +13,7 @@ import { updateReset } from "./updateReducer/updateActions";
 import { updateReducer } from "./updateReducer/updateReducer";
 
 const config = combineReducers({
-    bootcamps:bootcampsReducer,
+    bootCamps:bootCampsReducer,
     register:registerReducer,
     login:loginReducer,
     logout:logoutReducer,
@@ -21,7 +21,7 @@ const config = combineReducers({
     update:updateReducer,
     reset:resetReducer,
 })
-const GLOBAL__TYPE__RESET = 'ROOT__REDUCER/GLOBAL__TYPE__RESET'
+export const GLOBAL__TYPE__RESET = 'ROOT__REDUCER/GLOBAL__TYPE__RESET'
 
 
 
@@ -43,9 +43,9 @@ export const rootReducer = (state:any,action:any):InitialState => {
 
 
 
-export const globalStateResetInRootReducerThunk = ():ThunkType => (dispatch) => {
+export const globalStateResetInRootReducerThunk = ():ThunkType<any> => (dispatch) => {
     dispatch(authMeActions.reset())
-    dispatch(loginReset())
+    dispatch(loginActions.reset())
     dispatch(registerReset())
     dispatch(updateReset())
     localStorage.setItem('token','')

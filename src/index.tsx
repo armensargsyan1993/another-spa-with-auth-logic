@@ -47,7 +47,7 @@ ReactDOM.render(
 // reportWebVitals();
 
 
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof rootReducer>
 
 export type ThunkType<T extends Action> = ThunkAction<
 Promise<void> | void,

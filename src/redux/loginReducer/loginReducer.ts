@@ -1,5 +1,4 @@
-import { LoginPayload } from './loginActions';
-import { LOGIN__END, LOGIN__ERROR, LOGIN__PROCESS, LOGIN__RESET, LOGIN__START, ROUTE__COMPLETE, Login } from "./types"
+import { LoginTypes } from "./types"
 
 const initialState = {
     start:false,
@@ -10,20 +9,20 @@ const initialState = {
     success:false,
 }
 
-export const loginReducer = (state:InitialState = initialState,action:Action):InitialState => {
+export const loginReducer = (state:InitialState = initialState,action:):InitialState => {
     switch(action.type){
-        case LOGIN__START:
+        case LoginTypes.START:
             return {
                 ...state,
                 start:true,
                 end:false,
             }
-        case LOGIN__PROCESS:
+        case LoginTypes.PROCESS:
             return {
                 ...state,
                 process:true,
             }
-        case LOGIN__END:
+        case LoginTypes.END:
             return {
                 ...state,
                 start:false,
@@ -32,7 +31,7 @@ export const loginReducer = (state:InitialState = initialState,action:Action):In
                 isRouteComplete:true,
                 ...action.payload
             }
-        case LOGIN__ERROR:
+        case LoginTypes.ERROR:
             return {
                 ...state,
                 start:false,
@@ -41,13 +40,13 @@ export const loginReducer = (state:InitialState = initialState,action:Action):In
                 isRouteComplete:false,
                 ...action.payload
             }
-        case ROUTE__COMPLETE:
+        case LoginTypes.IS__COMPLETE:
             return {
                 ...state,
                 isRouteComplete:false
 
             }
-        case LOGIN__RESET:
+        case LoginTypes.RESET:
             return {
                 ...state,
                 start:false,
@@ -63,8 +62,3 @@ export const loginReducer = (state:InitialState = initialState,action:Action):In
 }
 
 type InitialState = typeof initialState
-
-type Action = {
-    type: Login
-    payload:LoginPayload
-}

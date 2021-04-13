@@ -1,5 +1,5 @@
-import { LogoutPayload } from "./logoutActions"
-import { Logout, LOGOUT__END, LOGOUT__ERROR, LOGOUT__PROCESS, LOGOUT__RESET, LOGOUT__START } from "./types"
+import { LogoutActionsTypes } from "./logoutActions"
+import { LogoutTypes } from "./types"
 
 const initialState = {
     start:false,
@@ -9,20 +9,20 @@ const initialState = {
     success:false,
 }
 
-export const logoutReducer = (state:InitialState = initialState,action:Action):InitialState => {
+export const logoutReducer = (state:InitialState = initialState,action:LogoutActionsTypes):InitialState => {
     switch(action.type){
-        case LOGOUT__START:
+        case LogoutTypes.START:
             return {
                 ...state,
                 start:true,
                 end:false,
             }
-        case LOGOUT__PROCESS:
+        case LogoutTypes.PROCESS:
             return {
                 ...state,
                 process:true,
             }
-        case LOGOUT__END:
+        case LogoutTypes.END:
             return {
                 ...state,
                 start:false,
@@ -30,7 +30,7 @@ export const logoutReducer = (state:InitialState = initialState,action:Action):I
                 end:true,
                 ...action.payload
             }
-        case LOGOUT__ERROR:
+        case LogoutTypes.ERROR:
             return {
                 ...state,
                 start:false,
@@ -38,7 +38,7 @@ export const logoutReducer = (state:InitialState = initialState,action:Action):I
                 end:false,
                 ...action.payload
             }
-        case LOGOUT__RESET:
+        case LogoutTypes.RESET:
             return {
                 ...state,
                 start:false,
@@ -53,8 +53,3 @@ export const logoutReducer = (state:InitialState = initialState,action:Action):I
 }
 
 type InitialState = typeof initialState
-
-type Action = {
-    type: Logout
-    payload:LogoutPayload
-}

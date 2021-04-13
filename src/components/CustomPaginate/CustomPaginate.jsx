@@ -6,7 +6,7 @@ import img1 from '../../pictures/image_1.jpg'
 import img2 from '../../pictures/image_2.jpg'
 import img3 from '../../pictures/image_3.jpg'
 import img4 from '../../pictures/image_4.jpg'
-import { bootcampsThunk } from '../../redux/bootcampsReducer/bootcampsActions'
+import { bootCampsThunk } from '../../redux/bootCampsReducer/bootCampsActions'
 import { Card } from '../Card/Card'
 
 
@@ -20,7 +20,7 @@ export const CustomPaginate = () => {
 
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(bootcampsThunk())
+        dispatch(bootCampsThunk())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 

@@ -2,6 +2,16 @@ import { ThunkType } from "../.."
 import { requestAPI } from "../../api/requestMethod"
 import { Register, REGISTER__END, REGISTER__ERROR, REGISTER__PROCESS, REGISTER__RESET, REGISTER__START } from "./types"
 
+
+
+
+
+
+
+
+
+
+
 export const registerStart = ():Start => {
     return {type:REGISTER__START}
 }
@@ -22,7 +32,7 @@ export const registerReset = ():Reset => {
     return {type:REGISTER__RESET}
 }
 
-export const registerThunk = (payload:RegisterThunkPayload):ThunkType => async(dispatch) => {
+export const registerThunk = (payload:RegisterThunkPayload):ThunkType<any> => async(dispatch) => {
     dispatch(registerStart())
     dispatch(registerProcess())
     requestAPI.register(payload)

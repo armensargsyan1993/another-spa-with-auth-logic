@@ -23,7 +23,7 @@ export const updateReset = ():Reset => {
     return {type:UPDATE__RESET}
 }
 
-export const updateThunk = (payload:UpdateThunkPayload):ThunkType => (dispatch) => {
+export const updateThunk = (payload:UpdateThunkPayload):ThunkType<any> => (dispatch) => {
     dispatch(updateStart())
     dispatch(updateProcess())
     requestAPI.updatePassword(payload)

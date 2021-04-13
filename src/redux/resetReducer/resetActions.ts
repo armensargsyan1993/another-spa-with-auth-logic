@@ -1,6 +1,6 @@
 import { ThunkType } from "../.."
 import { requestAPI } from "../../api/requestMethod"
-import { loginReset } from "../loginReducer/loginActions"
+import { loginActions } from "../loginReducer/loginActions"
 import { Reset, RESET__END, RESET__ERROR, RESET__PROCESS, RESET__RESET, RESET__START } from "./types"
 
 export const resetStart = ():Start => {
@@ -24,14 +24,14 @@ export const resetReset = ():ResetT => {
 }
 
 
-export const resetThunk = (payload:ResetThunkPayload):ThunkType => (dispatch) => {
+export const resetThunk = (payload:ResetThunkPayload):ThunkType<any> => (dispatch) => {
 
     dispatch(resetStart())
     dispatch(resetProcess())
     requestAPI.resetPassword(payload)
     .then(data => {
         //need another way
-        dispatch(loginReset())
+        dispatch(loginActions.reset())
         //need another way
         dispatch(resetEnd(data))
     })

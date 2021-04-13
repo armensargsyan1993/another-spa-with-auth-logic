@@ -23,9 +23,9 @@ export const authMeActions = {
     }
 }
 
-export type ActionTypes = GetActionsTypes<typeof authMeActions>
+export type AuthMeActionTypes = GetActionsTypes<typeof authMeActions>
 
-export const authMeThunk = ():ThunkType<ActionTypes> => (dispatch) => {
+export const authMeThunk = ():ThunkType<AuthMeActionTypes> => (dispatch) => {
     dispatch(authMeActions.start())
     dispatch(authMeActions.process())
     requestAPI.authMe()

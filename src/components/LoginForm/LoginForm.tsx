@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { RootState } from "../..";
 import { loginThunk, routeComplete } from "../../redux/loginReducer/loginActions";
+import { useTypedSelector } from "../customHooks";
 import { CustomInput } from "../CustomInput/CustomInput";
 import { ForgotButton } from "../ForgotButton/ForgotButton";
 import { SubmitButton } from "../SubmitButton/SubmitButton";
@@ -13,16 +15,17 @@ export const LoginForm = () => {
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch()
   const history = useHistory()
-  const success = useSelector(state => state.login.success)
-  const isRouteCompile = useSelector(state => state.login.isRouteComplete)
-  const onSubmit = (data) => {
+  const success = useSelector((state:RootState) => state.login.success)
+  const isRouteCompile = useSelector((state:RootState) => state.login.isRouteComplete)
+  const xxx = useSelector((state:RootState) => state)
+  const onSubmit = (data:any) => {
     dispatch(loginThunk(data))
   };
 
 
   useEffect(() => {
     if(success && isRouteCompile){
-      history.push('/BrowseBootcamps')
+      history.push('/BrowseBootCamps')
     }
     return () => {
       dispatch(routeComplete())

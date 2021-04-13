@@ -1,5 +1,5 @@
 
-import { ActionTypes } from "./authMeActions"
+import { AuthMeActionTypes } from "./authMeActions"
 import { AuthMeTypes } from "./types"
 
 const initialState = {
@@ -15,7 +15,7 @@ const initialState = {
 
 
 
-export const authMeReducer = (state:InitialState = initialState,action:ActionTypes):InitialState => {
+export const authMeReducer = (state:InitialState = initialState,action:AuthMeActionTypes):InitialState => {
     switch(action.type){
         case AuthMeTypes.START:
             return {

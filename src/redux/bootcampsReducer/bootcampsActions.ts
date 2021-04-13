@@ -1,47 +1,41 @@
+import { GetActionsTypes } from '../../index';
 import { ThunkType } from "../.."
 import { requestAPI } from "../../api/requestMethod"
-import { BOOTCAMPS__END, BOOTCAMPS__ERROR, BOOTCAMPS__PROCESS, BOOTCAMPS__RESET, BOOTCAMPS__START, BootCamps } from "./types"
+import { BootCampsTypes } from './types';
 
-export const bootcumpsStart = ():Start => {
-    return {type:BOOTCAMPS__START}
+
+
+export const bootCampsActions = {
+    start:() => {
+        return {type:BootCampsTypes.START} as const
+    },
+    process:() => {
+        return {type:BootCampsTypes.PROCESS} as const
+    },
+    end:(payload:EndPayload) => {
+        return {type:BootCampsTypes.END,payload} as const
+    },
+    error:(payload:ErrorPayload) => {
+        return {type:BootCampsTypes.ERROR,payload} as const
+    },
+    reset:() => {
+        return {type:BootCampsTypes.RESET} as const
+    }
 }
 
-export const bootcumpsProcess = ():Process => {
-    return {type:BOOTCAMPS__PROCESS}
-}
+export type BootCampsActionTypes = GetActionsTypes<typeof bootCampsActions>
 
-export const bootcumpsEnd = (payload:EndPayload):End => {
-    return {type:BOOTCAMPS__END,payload}
-}
 
-export const bootcumpsError = (payload:ErrorPayload):Error => {
-    return {type:BOOTCAMPS__ERROR,payload}
-}
-
-export const bootcumpsReset = ():Reset => {
-    return {type:BOOTCAMPS__RESET}
-}
-
-export const bootcampsThunk = ():ThunkType<ActionTypes> => (dispatch) => {
-    dispatch(bootcumpsStart())
-    dispatch(bootcumpsProcess())
+export const bootCampsThunk = ():ThunkType<BootCampsActionTypes> => (dispatch) => {
+    dispatch(bootCampsActions.start)
+    dispatch(bootCampsActions.process)
     requestAPI.getAllBootCamps()
     .then(data => {
-        dispatch(bootcumpsEnd(data))
+        dispatch(bootCampsActions.end(data))
     })
     .catch(e => {
-        dispatch(bootcumpsError(e.response.data))
+        dispatch(bootCampsActions.error(e.response.data))
     })
-}
-
-type ActionTypes = Start | Process | End | Reset | Error
-
-type Start = {
-    type: BootCamps
-}
-
-type Process = {
-    type: BootCamps
 }
 
 type EndPayload = {
@@ -50,24 +44,7 @@ type EndPayload = {
     pagination:{}
 }
 
-type End = {
-    type: BootCamps
-    payload:EndPayload
-    
-}
-
 type ErrorPayload = {
     success:boolean,
     error:string
 }
-
-type Error = {
-    type: BootCamps
-    payload:ErrorPayload
-}
-
-type Reset = {
-    type: BootCamps
-}
-
-export type BootCampsPayload = ErrorPayload | EndPayload
