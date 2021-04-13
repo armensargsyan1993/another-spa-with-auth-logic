@@ -1,5 +1,6 @@
-import { AuthPayload } from "./authMeActions"
-import { AUTH__ME__END, AUTH__ME__ERROR, AUTH__ME__PROCESS, AUTH__ME__START, AUTH__ME__RESET,AuthMe } from "./types"
+
+import { ActionTypes } from "./authMeActions"
+import { AuthMeTypes } from "./types"
 
 const initialState = {
     start:false,
@@ -14,20 +15,20 @@ const initialState = {
 
 
 
-export const authMeReducer = (state:InitialState = initialState,action:Action):InitialState => {
+export const authMeReducer = (state:InitialState = initialState,action:ActionTypes):InitialState => {
     switch(action.type){
-        case AUTH__ME__START:
+        case AuthMeTypes.START:
             return {
                 ...state,
                 start:true,
                 end:false,
             }
-        case AUTH__ME__PROCESS:
+        case AuthMeTypes.PROCESS:
             return {
                 ...state,
                 process:true,
             }
-        case AUTH__ME__END:
+        case AuthMeTypes.END:
             return {
                 ...state,
                 start:false,
@@ -35,7 +36,7 @@ export const authMeReducer = (state:InitialState = initialState,action:Action):I
                 end:true,
                 ...action.payload
             }
-        case AUTH__ME__ERROR:
+        case AuthMeTypes.ERROR:
             return {
                 ...state,
                 start:false,
@@ -44,9 +45,9 @@ export const authMeReducer = (state:InitialState = initialState,action:Action):I
                 email: "",
                 name: "",
                 role: "",
-               ...action.payload
+                ...action.payload
             }
-        case AUTH__ME__RESET:
+        case AuthMeTypes.RESET:
             return {
                 ...state,
                 start:false,
@@ -64,10 +65,3 @@ export const authMeReducer = (state:InitialState = initialState,action:Action):I
 }
 
 type InitialState = typeof initialState
-
-
-
-type Action = {
-    type: AuthMe
-    payload:AuthPayload
-}

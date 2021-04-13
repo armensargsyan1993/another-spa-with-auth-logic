@@ -10,7 +10,7 @@ const initialState = {
     error:"",
     success:false,
     data:[],
-    pagination:{}
+    pagination:null as null | any
 }
 
 export const bootcampsReducer = (state:InitialState = initialState,action:Action):InitialState => {

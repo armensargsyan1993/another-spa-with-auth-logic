@@ -41,7 +41,6 @@ const login = (payload) => {
         ...payload
     }).then(res => {
         localStorage.setItem('token',res.data.token)
-        return res.data
     })
 }
 
