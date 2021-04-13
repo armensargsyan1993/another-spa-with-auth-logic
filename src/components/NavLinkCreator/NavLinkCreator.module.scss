@@ -1,0 +1,30 @@
+@import '../global.scss';
+
+
+.root{
+    a{
+    display: flex;
+    align-items: center;
+    }
+    .link{
+        color: $whiteOp;
+    }
+}
+
+.dropDownContainer{
+    // position: relative;
+    top: 45%;
+    max-width: 100px;
+    width: 100%;
+    border: 3px solid red;
+}
+
+.line{
+    width: 2px;
+    height: 24px;
+    background-color: $whiteOp;
+}
+
+.selected{
+    color: $txtClr;
+}

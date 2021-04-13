@@ -1,0 +1,57 @@
+@import '../global.scss';
+.root{
+    display: flex;
+    align-items: center;
+    background-color: $bgclr;
+    // height: 56px;
+    height: 5.7vh;
+    .logo{
+        display: flex;
+        align-items: center;
+        max-width: 150px;
+        width: 100%;
+        p{
+            color: $white;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 20px;
+            line-height: 30px;
+            margin-left: 10px;
+        }
+    }
+    .innerContainer{
+        display: flex;
+        justify-content: space-between;
+        .nav{
+            display: flex;
+            align-items: center;
+            img{
+                margin-right: 8px;
+            }
+            span{
+                margin-right: 17px;
+            }
+        }
+    }
+}
+
+:global {
+    .Dropdown-option{
+        background-color: $bgclr !important;
+        color: $txtClr !important;
+      }
+    .Dropdown-control{
+    background-color: transparent !important;
+    border: none !important;
+    color: $whiteOp !important;
+    }
+    
+    .Dropdown-menu{
+    color: $whiteOp !important;
+    border: none !important;
+    }
+
+    .Dropdown-arrow{
+        border-color: $whiteOp transparent !important;
+    }
+}

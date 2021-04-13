@@ -1,0 +1,15 @@
+@import '../global.scss';
+
+
+
+.root{
+    .span{
+        display: block;
+        margin-top: 20px;
+    }
+    .input{
+        width: 100%;
+        border: 1px solid $brdClr;
+        margin-top: 5px;
+    }
+}

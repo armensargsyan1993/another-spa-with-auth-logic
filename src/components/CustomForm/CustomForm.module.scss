@@ -1,0 +1,32 @@
+@import '../global.scss';
+.root{
+    .form{
+        .inputs{
+            display: flex;
+            justify-content: space-between;
+            input{
+                width: 100%;
+                color: $inpClr;
+                &:nth-child(1){
+                    margin-right: 15px;
+                }
+                &:nth-child(2){
+                    margin-left: 15px;
+                }
+            }
+        }
+        .btn{
+            margin-top: 16px;
+            input{
+                border: none;
+                width: 100%;
+                background-color: $bgclr;
+                color: $txtClr;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 15px;
+                line-height: 24px;
+            }
+        }
+    }
+}

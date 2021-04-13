@@ -1,0 +1,25 @@
+@import '../global.scss';
+
+.root{
+    .title{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 24px;
+    }
+    margin-top: 24px;
+    border: 1px solid $brdClr;
+    padding: 9px 21px 21px 21px;
+    .span{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 24px;
+    }
+    .inputContainer{
+        margin-top: 10px;
+    }
+    .input{
+        margin-right: 10px;
+    }
+}

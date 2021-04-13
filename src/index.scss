@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import './components/global.scss';
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+*,*:before,*:after{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+a{
+  color: $white;
+}
+
+input{
+  padding: 14px;
+}
+
+h1,h2,h3,input,p,span{
+  font-family: Roboto;
+}
+
+li{
+  list-style: none;
+}
+
+svg,img{
+  width:16px;
+  height:16px;
+}
+
+svg{
+  fill:white;
+}
+
+button{
+  display: block;
+}
+
+select.input-lg {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  /* no standardized syntax available, no ie-friendly solution available */
+}
+
+.container{
+  max-width: 1120px;
+  width: 100%;
+  // height: 100vh;
+  margin: 0 auto;
+}
+
+.testingPaginate{
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pagination{
+  display: flex;
+  margin:auto 0 0 0;
+  li{
+    border: 1px solid $brdClr;
+    width: 35px;
+    height: 38px;
+    display: block !important;
+    a{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      color: $bgclr;
+      cursor: pointer;
+    }
+  }
+  .next,.previous{
+    width: 86px;
+    a{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $txtClr;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .next:not(.pagination__link--disabled),.previous:not(.pagination__link--disabled){
+    background-color: $bgclr;
+  }
+  .next.pagination__link--disabled,.previous.pagination__link--disabled{
+    a{
+      color: $cardTxtClr;
+    }
+  }
+}
+
+.MY__CUSTOM__ERROR__CLASS__NAME{
+  border: 2px solid red !important;
+}

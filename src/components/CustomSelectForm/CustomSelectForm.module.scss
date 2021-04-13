@@ -1,0 +1,38 @@
+@import '../global.scss';
+.root{
+    .form{
+        &>span{
+            font-style: normal;
+            font-weight: 300;
+            font-size: 15px !important;
+            margin-bottom: 8px;
+            margin-top: 24px;
+            display: block;
+        }
+        input[type="submit"]{
+            font-style: normal;
+            font-weight: 300;
+            font-size: 15px;
+            width: 100%;
+            border: none;
+            background-color: $bgclr;
+            margin-top: 24px;
+        }
+        .select{
+            width: 100%;
+        }
+    }
+}
+
+.arrow{
+    width: 15px;
+    height: 15px;
+}
+
+.rating{
+
+}
+
+.budget{
+
+}

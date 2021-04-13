@@ -1,0 +1,26 @@
+.root{
+    margin-top: 48px;
+    .innerContainer{
+        display: flex;
+        justify-content: space-between;
+        .aside{
+            max-width: 350px;
+            width: 100%;
+            .location{
+                &>span{
+                    display: block;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 24px;
+                    line-height: 29px;
+                    margin-top: 22px;
+                    margin-bottom: 9px;
+                }
+            }
+        }
+        .cardContainer{
+            max-width: 734px;
+            width: 100%;
+        }
+    }
+}

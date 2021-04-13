@@ -1,0 +1,49 @@
+@import '../global.scss';
+.root{
+    position: relative;
+    height: 94.3vh;
+    color: $txtClr;
+    .innerContainer{
+        position: absolute;
+        top: 50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        max-width: 1110px;
+        width: 100%;
+        .title{
+            max-width: 538px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            h1{
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 53px;
+                line-height: 67px;
+            }
+            span{
+                display: block;
+                margin-top: 11px;
+                margin-bottom: 16px;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 19px;
+                line-height: 30px;
+            }
+        }
+        
+    }
+}
+
+.root::before{
+    content: "";
+    background: url('../../pictures/bg.png') center/cover no-repeat;
+    filter:brightness(60%);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1111111;   
+}

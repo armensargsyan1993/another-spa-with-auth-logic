@@ -1,0 +1,27 @@
+@import '../global.scss';
+
+.root{
+    .top{
+        display: flex;
+        align-items: center;
+    }
+    .svg{
+        width: 38px;
+        height: 100px;
+        margin-right: 12px;
+        fill: black ;
+    }
+    h2{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 40px;
+        line-height: 48px;
+    }
+    .subtitle{
+        max-width: 393px;
+        width: 100%;
+        span{
+            color: $inputTxtClr;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@import '../global.scss';
+
+.forgotButtonContainer{
+    margin-top: 10px;
+    display: flex;
+    .btn{
+        display: block;
+        margin-left: 5px;
+        background: none;
+        border: none;
+        color: $bgclr;
+        cursor: pointer;
+    }
+}

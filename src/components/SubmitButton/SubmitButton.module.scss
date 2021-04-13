@@ -1,0 +1,11 @@
+@import '../global.scss';
+.btn{
+    color: $txtClr;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 24px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
