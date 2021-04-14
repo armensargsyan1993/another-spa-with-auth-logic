@@ -9,13 +9,15 @@ import { useSelector } from "../overrideHooks";
 import { SubmitButton } from "../SubmitButton/SubmitButton";
 import styles from './LoginForm.module.scss';
 
-export const LoginForm = () => {
+export const LoginForm:React.FC = () => {
 
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch()
   const history = useHistory()
   const success = useSelector(state => state.login.success)
   const isRouteCompile = useSelector(state => state.login.isRouteComplete)
+  console.log(success)
+  console.log(isRouteCompile)
   const onSubmit = (data:any) => {
     dispatch(loginThunk(data))
   };
@@ -23,7 +25,7 @@ export const LoginForm = () => {
 
   useEffect(() => {
     if(success && isRouteCompile){
-      history.push('/BrowseBootCamps')
+      history.push('/BrowserBootCamps')
     }
     return () => {
       dispatch(loginActions.isComplete())

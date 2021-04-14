@@ -7,7 +7,9 @@ import styles from "./CustomSelectForm.module.scss";
 
 export const CustomSelectForm = () => {
   const { control, handleSubmit } = useForm();
-  const onSubmit = (data) => console.warn(data);
+  const onSubmit = (data) => {
+    // console.warn(data)
+  };
 
   const ratingSelect = [
     { value: '1', label: 'a' },

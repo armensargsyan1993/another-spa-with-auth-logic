@@ -14,7 +14,7 @@ export const CustomPaginate = () => {
     
     const imgArr = [img1,img2,img3,img4]
     const [currentPage, setCurrentPage] = useState(0);
-    const bootcamps = useSelector(state => state.bootcamps.data)
+    const bootCamps = useSelector(state => state.bootCamps.data)
     
     //what parameter giving api the count in reducer??????????????????
 
@@ -30,13 +30,13 @@ export const CustomPaginate = () => {
 
     const PER_PAGE = 4;
     const offset = currentPage * PER_PAGE;
-    const currentPageData = bootcamps.slice(offset, offset + PER_PAGE)
+    const currentPageData = bootCamps.slice(offset, offset + PER_PAGE)
 
-    const pageCount = Math.ceil(bootcamps.length / PER_PAGE);
+    const pageCount = Math.ceil(bootCamps.length / PER_PAGE);
 
     return (
             <div className="testingPaginate">
-                {!bootcamps.length && imgArr.map((e,i) => {
+                {!bootCamps.length && imgArr.map((e,i) => {
                     return <Card key={i} src={e}/>
                 })}
                 {currentPageData?.map((e) => <Card key={e.id} address = {e.address} name={e.name} careers={e.careers}/>)}

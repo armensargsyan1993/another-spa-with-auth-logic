@@ -25,8 +25,12 @@ const axiosInstance = axios.create({
 
 const getAllBootCamps = () => {
     return axiosInstance.get(GET__ALL__BOOT__CAMPS__URL)
-    .then(res => res.data)
-    .catch(err => Promise.reject(err))
+    .then(res => {
+        return res.data
+    })
+    .catch(e => {
+        return Promise.reject(e.response.data)
+    })
 }
 
 const register = (payload) => {
@@ -35,15 +39,18 @@ const register = (payload) => {
     }).then(res => {
         localStorage.setItem('token',res.data.token)
         return res.data
+    }).catch(e => {
+        return Promise.reject(e.response.data)
     })
 }
 
 const login = (payload) => {
-    return axiosInstance.post(LOGIN__URL,{
-        ...payload
+    return axiosInstance.post(LOGIN__URL,payload,{
     }).then(res => {
         localStorage.setItem('token',res.data.token)
         return res.data.success
+    }).catch(e => {
+        return Promise.reject(e.response.data)
     })
 }
 
@@ -100,7 +107,6 @@ const updatePassword = (payload) => {
 }
 
 const resetPassword = (payload) => {
-    console.warn(payload);
     return axiosInstance.post(FORGOT__PASSWORD__URL,{
         headers:{
             'Content-Type': 'application/json'

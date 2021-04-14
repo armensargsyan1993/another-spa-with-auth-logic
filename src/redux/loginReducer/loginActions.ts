@@ -2,9 +2,9 @@ import { LogoutActionsTypes } from './../logoutReducer/logoutActions';
 import { requestAPI } from "../../api/requestMethod"
 import { authMeThunk } from "../authMeReducer/authMeActions"
 import { logoutActions } from "../logoutReducer/logoutActions"
-import { updateReset } from "../updateReducer/updateActions"
 import { LoginTypes } from "./types"
 import { GetActionsTypes, ThunkType } from '../../globalTypes';
+import { updateActions, UpdateActionsTypes } from '../updateReducer/updateActions';
 
 
 
@@ -32,18 +32,18 @@ export const loginActions = {
 
 export type LoginActionsTypes = GetActionsTypes<typeof loginActions>
 
-export const loginThunk = (payload:LoginThunkPayload):ThunkType<LoginActionsTypes | LogoutActionsTypes> => (dispatch) => {
+export const loginThunk = (payload:LoginThunkPayload):ThunkType<LoginActionsTypes | LogoutActionsTypes | UpdateActionsTypes> => (dispatch) => {
     dispatch(loginActions.start())
     dispatch(loginActions.process())
     requestAPI.login(payload)
     .then(data => {
         dispatch(logoutActions.reset())
-        dispatch(updateReset())
-        dispatch(loginActions.end(data.success))
+        dispatch(updateActions.reset())
+        dispatch(loginActions.end({success:data}))
         dispatch(authMeThunk())
     })
     .catch(e => {
-        dispatch(loginActions.error(e.response.data))
+        dispatch(loginActions.error(e))
     })
 }
 

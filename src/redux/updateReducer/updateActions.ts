@@ -1,49 +1,41 @@
-import { ThunkType } from "../.."
 import { requestAPI } from "../../api/requestMethod"
+import { GetActionsTypes, ThunkType } from "../../globalTypes"
 import { logoutThunk } from "../logoutReducer/logoutActions"
-import { Update, UPDATE__END, UPDATE__ERROR, UPDATE__PROCESS, UPDATE__RESET, UPDATE__START } from "./types"
+import { UpdaterTypes } from "./types"
 
-export const updateStart = ():Start => {
-    return {type:UPDATE__START}
+
+export const updateActions = {
+    start:() => {
+        return {type:UpdaterTypes.START} as const
+    },
+    process:() => {
+        return {type:UpdaterTypes.PROCESS} as const
+    },
+    end:(payload:EndPayload) => {
+        return {type:UpdaterTypes.END,payload} as const
+    },
+    error:(payload:ErrorPayload) => {
+        return {type:UpdaterTypes.ERROR,payload} as const
+    },
+    reset:() => {
+        return {type:UpdaterTypes.RESET} as const
+    }
 }
+export type UpdateActionsTypes = GetActionsTypes<typeof updateActions>
 
-export const updateProcess = ():Process => {
-    return {type:UPDATE__PROCESS}
-}
-
-export const updateEnd = (payload:EndPayload):End => {
-    return {type:UPDATE__END,payload}
-}
-
-export const updateError = (payload:ErrorPayload):Error => {
-    return {type:UPDATE__ERROR,payload}
-}
-
-export const updateReset = ():Reset => {
-    return {type:UPDATE__RESET}
-}
-
-export const updateThunk = (payload:UpdateThunkPayload):ThunkType<any> => (dispatch) => {
-    dispatch(updateStart())
-    dispatch(updateProcess())
+export const updateThunk = (payload:UpdateThunkPayload):ThunkType<UpdateActionsTypes> => (dispatch) => {
+    dispatch(updateActions.start())
+    dispatch(updateActions.process())
     requestAPI.updatePassword(payload)
     .then(data => {
         //need another way
         dispatch(logoutThunk())
         //need another way
-        dispatch(updateEnd(data))
+        dispatch(updateActions.end(data))
     })
     .catch(e => {
-        dispatch(updateError(e.response.data))
+        dispatch(updateActions.error(e.response.data))
     })
-}
-
-type Start = {
-    type: Update
-}
-
-type Process = {
-    type: Update
 }
 
 type EndPayload = {
@@ -52,28 +44,11 @@ type EndPayload = {
     pagination:{}
 }
 
-type End = {
-    type: Update
-    payload:EndPayload
-    
-}
-
 type ErrorPayload = {
     success:boolean,
     error:string
 }
 
-type Error = {
-    type: Update
-    payload:ErrorPayload
-}
-
-type Reset = {
-    type: Update
-}
-
 type UpdateThunkPayload = {
 
 }
-
-export type UpdatePayload = ErrorPayload | EndPayload

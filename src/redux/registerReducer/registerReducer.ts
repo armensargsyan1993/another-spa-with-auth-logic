@@ -1,4 +1,4 @@
-import { LogoutActionsTypes } from './registerActions';
+import { RegisterActionsTypes } from './registerActions';
 import { RegisterTypes } from './types';
 
 const initialState = {
@@ -9,7 +9,7 @@ const initialState = {
     success:false
 }
 
-export const registerReducer = (state:InitialState = initialState,action:LogoutActionsTypes):InitialState => {
+export const registerReducer = (state:InitialState = initialState,action:RegisterActionsTypes):InitialState => {
     switch(action.type){
         case RegisterTypes.START:
             return {
@@ -23,6 +23,7 @@ export const registerReducer = (state:InitialState = initialState,action:LogoutA
                 process:true,
             }
         case RegisterTypes.END:
+            debugger
             return {
                 ...state,
                 start:false,

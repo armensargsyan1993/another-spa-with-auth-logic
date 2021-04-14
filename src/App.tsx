@@ -4,7 +4,7 @@ import { Navbar } from './components/Navbar/Navbar';
 import { RoutesContainer } from './components/RoutesContainer/RoutesContainer';
 import { authMeThunk } from './redux/authMeReducer/authMeActions';
 
-function App() {
+export const App:React.FC = () => {
   const dispatch = useDispatch()
   
   useEffect(() => {
@@ -18,5 +18,3 @@ function App() {
     </>
   );
 }
-
-export default App;

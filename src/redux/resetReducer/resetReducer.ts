@@ -1,6 +1,8 @@
 //updateReducer
-import { ResetPayload } from "./resetActions"
-import { Reset, RESET__END, RESET__ERROR, RESET__PROCESS, RESET__RESET, RESET__START } from "./types"
+
+import { ResetActionsTypes } from "./resetActions"
+import { ResetTypes } from "./types"
+
 
 const initialState = {
     start:false,
@@ -10,20 +12,20 @@ const initialState = {
     success:false,
 }
 
-export const resetReducer = (state:InitialState = initialState,action:Action):InitialState => {
+export const resetReducer = (state:InitialState = initialState,action:ResetActionsTypes):InitialState => {
     switch(action.type){
-        case RESET__START:
+        case ResetTypes.START:
             return {
                 ...state,
                 start:true,
                 end:false,
             }
-        case RESET__PROCESS:
+        case ResetTypes.PROCESS:
             return {
                 ...state,
                 process:true,
             }
-        case RESET__END:
+        case ResetTypes.END:
             return {
                 ...state,
                 start:false,
@@ -31,7 +33,7 @@ export const resetReducer = (state:InitialState = initialState,action:Action):In
                 end:true,
                 ...action.payload
             }
-        case RESET__ERROR:
+        case ResetTypes.ERROR:
             return {
                 ...state,
                 start:false,
@@ -39,7 +41,7 @@ export const resetReducer = (state:InitialState = initialState,action:Action):In
                 end:false,
                 ...action.payload
             }
-        case RESET__RESET:
+        case ResetTypes.RESET:
             return {
                 ...state,
                 start:false,
@@ -55,8 +57,3 @@ export const resetReducer = (state:InitialState = initialState,action:Action):In
 }
 
 type InitialState = typeof initialState
-
-type Action = {
-    type: Reset
-    payload:ResetPayload
-}

@@ -23,14 +23,14 @@ export const registerActions = {
         return {type:RegisterTypes.RESET} as const
     }
 }
-export type LogoutActionsTypes = GetActionsTypes<typeof registerActions>
+export type RegisterActionsTypes = GetActionsTypes<typeof registerActions>
 
-export const registerThunk = (payload:RegisterThunkPayload):ThunkType<LogoutActionsTypes> => async(dispatch) => {
+export const registerThunk = (payload:RegisterThunkPayload):ThunkType<RegisterActionsTypes> => async(dispatch) => {
     dispatch(registerActions.start())
     dispatch(registerActions.process())
     requestAPI.register(payload)
     .then(data => {
-        dispatch(registerActions.end(data.success))
+        dispatch(registerActions.end({success:data.success}))
     })
     .catch(e => {
         dispatch(registerActions.error(e.response.data))
@@ -39,8 +39,6 @@ export const registerThunk = (payload:RegisterThunkPayload):ThunkType<LogoutActi
 
 type EndPayload = {
     success:boolean,
-    data:[],
-    pagination:{}
 }
 
 type ErrorPayload = {

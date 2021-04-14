@@ -1,53 +1,47 @@
-import { ThunkType } from "../.."
 import { requestAPI } from "../../api/requestMethod"
-import { loginActions } from "../loginReducer/loginActions"
-import { Reset, RESET__END, RESET__ERROR, RESET__PROCESS, RESET__RESET, RESET__START } from "./types"
+import { GetActionsTypes, ThunkType } from "../../globalTypes"
+import { loginActions, LoginActionsTypes } from "../loginReducer/loginActions"
+import { ResetTypes } from "./types"
 
-export const resetStart = ():Start => {
-    return {type:RESET__START}
+
+export const resetActions = {
+    start:() => {
+        return {type:ResetTypes.START} as const
+    },
+    process:() => {
+        return {type:ResetTypes.PROCESS} as const
+    },
+    end:(payload:EndPayload) => {
+        return {type:ResetTypes.END,payload} as const
+    },
+    error:(payload:ErrorPayload) => {
+        return {type:ResetTypes.ERROR,payload} as const
+    },
+    reset:() => {
+        return {type:ResetTypes.RESET} as const
+    }
 }
-
-export const resetProcess = ():Process => {
-    return {type:RESET__PROCESS}
-}
-
-export const resetEnd = (payload:EndPayload):End => {
-    return {type:RESET__END,payload}
-}
-
-export const resetError = (payload:ErrorPayload):Error => {
-    return {type:RESET__ERROR,payload}
-}
-
-export const resetReset = ():ResetT => {
-    return {type:RESET__RESET}
-}
+export type ResetActionsTypes = GetActionsTypes<typeof resetActions>
 
 
-export const resetThunk = (payload:ResetThunkPayload):ThunkType<any> => (dispatch) => {
 
-    dispatch(resetStart())
-    dispatch(resetProcess())
+export const resetThunk = (payload:ResetThunkPayload):ThunkType<ResetActionsTypes | LoginActionsTypes> => (dispatch) => {
+
+    dispatch(resetActions.start())
+    dispatch(resetActions.process())
     requestAPI.resetPassword(payload)
     .then(data => {
         //need another way
         dispatch(loginActions.reset())
         //need another way
-        dispatch(resetEnd(data))
+        dispatch(resetActions.end(data))
     })
     .catch(e => {
-        dispatch(resetError(e.response.data))
+        dispatch(resetActions.error(e.response.data))
         alert(e.response?.data?.error);
     })
 }
 
-type Start = {
-    type: Reset
-}
-
-type Process = {
-    type: Reset
-}
 
 type EndPayload = {
     success:boolean,
@@ -55,28 +49,11 @@ type EndPayload = {
     pagination:{}
 }
 
-type End = {
-    type: Reset
-    payload:EndPayload
-    
-}
-
 type ErrorPayload = {
     success:boolean,
     error:string
 }
 
-type Error = {
-    type: Reset
-    payload:ErrorPayload
-}
-
-type ResetT = {
-    type: Reset
-}
-
 type ResetThunkPayload = {
 
 }
-
-export type ResetPayload = ErrorPayload | EndPayload

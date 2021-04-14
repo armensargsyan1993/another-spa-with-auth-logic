@@ -1,16 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { registerThunk, registerReset } from '../../redux/registerReducer/registerActions';
+import { registerActions, registerThunk } from '../../redux/registerReducer/registerActions';
 import { CustomInput } from '../CustomInput/CustomInput';
 import { CustomRadioInput } from '../CustomRadioInput/CustomRadioInput';
+import { useSelector } from '../overrideHooks';
 import { SubmitButton } from '../SubmitButton/SubmitButton';
 import styles from './RegisterForm.module.scss';
 
 
+export type aaa = any
 
-export const RegisterForm = () => {
+export const RegisterForm:React.FC = () => {
 
     const { register, handleSubmit, watch, errors } = useForm();
     const dispatch = useDispatch()
@@ -26,13 +28,13 @@ export const RegisterForm = () => {
         history.push('/Login')
       }
       return () => {
-        dispatch(registerReset())
+        dispatch(registerActions.reset())
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[success])
 
 
-    const onSubmit = (data) => {
+    const onSubmit = (data:any) => {
       data = Object.fromEntries(Object.entries(data).filter(e => {
         return e[0] !== 'confirmPassword'
       }))
@@ -68,7 +70,7 @@ export const RegisterForm = () => {
         name:'confirmPassword',
         text:'Confirm Password',
         register,
-        refForMatch:password.current,
+        refForMatch:password,
         required:true,
         errors,
         placeholder:'Confirm Password',
@@ -94,7 +96,7 @@ export const RegisterForm = () => {
             }
           ]
       }
-  
+      
     return (
       <>
           <form  onSubmit={handleSubmit(onSubmit)}>

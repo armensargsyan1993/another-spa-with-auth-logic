@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect, Route, Switch } from "react-router";
 
 import {ErrorBoundary} from '../ErrorBoundary/ErrorBoundary'
-import {Bootcamps} from '../Bootcamps/Bootcamps'
+import {BootCamps} from '../BootCamps/BootCamps'
 import {Login} from '../Login/Login'
 import {Home} from '../Home/Home'
 import {Register} from '../Register/Register'
@@ -21,10 +21,10 @@ export const RoutesContainer = () => {
         </Route>
         <Route
           exact
-          path="/BrowseBootcamps"
+          path="/BrowserBootCamps"
           render={() => (
             <ErrorBoundary>
-              <Bootcamps/>
+              <BootCamps/>
             </ErrorBoundary>
           )}
         />

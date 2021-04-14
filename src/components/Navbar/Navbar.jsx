@@ -39,7 +39,7 @@ export const Navbar = () => {
     {linkName:'Home'},
     ...queryArr,
     {line:true,key:'line1'},
-    {linkName:'BrowseBootcamps'}
+    {linkName:'BrowserBootCamps'}
 ]
     return (
         <div className={styles.root}>

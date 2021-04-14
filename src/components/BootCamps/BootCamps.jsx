@@ -2,9 +2,9 @@ import React from 'react'
 import { CustomForm } from '../CustomForm/CustomForm'
 import { CustomPaginate } from '../CustomPaginate/CustomPaginate'
 import { CustomSelectForm } from '../CustomSelectForm/CustomSelectForm'
-import styles from './Bootcamps.module.scss'
+import styles from './BootCamps.module.scss'
 
-export const Bootcamps = () => {
+export const BootCamps = () => {
 
     return (
         <section className={styles.root}>

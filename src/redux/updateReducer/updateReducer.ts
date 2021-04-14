@@ -1,6 +1,6 @@
-import { UpdatePayload } from './updateActions';
+import { UpdateActionsTypes } from './updateActions';
 //updateReducer
-import { Update, UPDATE__END, UPDATE__ERROR, UPDATE__PROCESS, UPDATE__RESET, UPDATE__START } from "./types"
+import { UpdaterTypes } from "./types"
 
 const initialState = {
     start:false,
@@ -10,20 +10,20 @@ const initialState = {
     success:false,
 }
 
-export const updateReducer = (state:InitialState = initialState,action:Action):InitialState => {
+export const updateReducer = (state:InitialState = initialState,action:UpdateActionsTypes):InitialState => {
     switch(action.type){
-        case UPDATE__START:
+        case UpdaterTypes.START:
             return {
                 ...state,
                 start:true,
                 end:false,
             }
-        case UPDATE__PROCESS:
+        case UpdaterTypes.PROCESS:
             return {
                 ...state,
                 process:true,
             }
-        case UPDATE__END:
+        case UpdaterTypes.END:
             return {
                 ...state,
                 start:false,
@@ -31,7 +31,7 @@ export const updateReducer = (state:InitialState = initialState,action:Action):I
                 end:true,
                 ...action.payload
             }
-        case UPDATE__ERROR:
+        case UpdaterTypes.ERROR:
             return {
                 ...state,
                 start:false,
@@ -39,7 +39,7 @@ export const updateReducer = (state:InitialState = initialState,action:Action):I
                 end:false,
                 ...action.payload
             }
-        case UPDATE__RESET:
+        case UpdaterTypes.RESET:
             return {
                 ...state,
                 start:false,
@@ -55,8 +55,3 @@ export const updateReducer = (state:InitialState = initialState,action:Action):I
 }
 
 type InitialState = typeof initialState
-
-type Action = {
-    type: Update
-    payload:UpdatePayload
-}

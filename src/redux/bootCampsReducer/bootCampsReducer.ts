@@ -1,5 +1,4 @@
-import { BootCampsActionTypes } from './bootCampsActions';
-
+import { BootCampsActionTypes } from "./bootCampsActions"
 import { BootCampsTypes } from "./types"
 
 const initialState = {
@@ -42,7 +41,7 @@ export const bootCampsReducer = (state:InitialState = initialState,action:BootCa
                 end:false,
                 ...action.payload
             }
-        case BootCampsTypes.END:
+        case BootCampsTypes.RESET:
             return {
                 ...state,
                 start:false,

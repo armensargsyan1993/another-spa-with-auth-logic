@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { Action, AnyAction, applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import logger from 'redux-logger';
 //add localStorage
 import { persistReducer, persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import storage from 'redux-persist/lib/storage';
-import thunk, { ThunkAction } from 'redux-thunk';
-import App from './App';
+import thunk from 'redux-thunk';
+import {App} from './App';
 import './index.scss';
 import { rootReducer } from './redux/rootReducer';
 
@@ -45,9 +45,3 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals();
-
-// export type TestThunkType = ThunkAction<
-// Promise<void> | void,
-// RootState,
-// unknown,
-// Action<string>>
