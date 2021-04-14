@@ -1,7 +1,5 @@
-import { GetActionsTypes } from './../../index';
-
 import { requestAPI } from "../../api/requestMethod"
-import { ThunkType } from "../.."
+import { GetActionsTypes, ThunkType } from "../../globalTypes";
 import { AuthMeTypes } from './types';
 
 

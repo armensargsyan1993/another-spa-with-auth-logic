@@ -1,57 +1,40 @@
-import { ThunkType } from "../.."
 import { requestAPI } from "../../api/requestMethod"
-import { Register, REGISTER__END, REGISTER__ERROR, REGISTER__PROCESS, REGISTER__RESET, REGISTER__START } from "./types"
+import { GetActionsTypes, ThunkType } from "../../globalTypes"
+import { RegisterTypes } from "./types"
 
 
 
 
 
-
-
-
-
-
-
-export const registerStart = ():Start => {
-    return {type:REGISTER__START}
+export const registerActions = {
+    start:() => {
+        return {type:RegisterTypes.START} as const
+    },
+    process:() => {
+        return {type:RegisterTypes.PROCESS} as const
+    },
+    end:(payload:EndPayload) => {
+        return {type:RegisterTypes.END,payload} as const
+    },
+    error:(payload:ErrorPayload) => {
+        return {type:RegisterTypes.ERROR,payload} as const
+    },
+    reset:() => {
+        return {type:RegisterTypes.RESET} as const
+    }
 }
+export type LogoutActionsTypes = GetActionsTypes<typeof registerActions>
 
-export const registerProcess = ():Process => {
-    return {type:REGISTER__PROCESS}
-}
-
-export const registerEnd = (payload:EndPayload):End => {
-    return {type:REGISTER__END,payload}
-}
-
-export const registerError = (payload:ErrorPayload):Error => {
-    return {type:REGISTER__ERROR,payload}
-}
-
-export const registerReset = ():Reset => {
-    return {type:REGISTER__RESET}
-}
-
-export const registerThunk = (payload:RegisterThunkPayload):ThunkType<any> => async(dispatch) => {
-    dispatch(registerStart())
-    dispatch(registerProcess())
+export const registerThunk = (payload:RegisterThunkPayload):ThunkType<LogoutActionsTypes> => async(dispatch) => {
+    dispatch(registerActions.start())
+    dispatch(registerActions.process())
     requestAPI.register(payload)
     .then(data => {
-        // dispatch(setEmail({[payload.name]:payload.email}))
-        dispatch(registerEnd(data.success))
+        dispatch(registerActions.end(data.success))
     })
     .catch(e => {
-        dispatch(registerError(e.response.data))
+        dispatch(registerActions.error(e.response.data))
     })
-}
-
-
-type Start = {
-    type: Register
-}
-
-type Process = {
-    type: Register
 }
 
 type EndPayload = {
@@ -60,28 +43,11 @@ type EndPayload = {
     pagination:{}
 }
 
-type End = {
-    type: Register
-    payload:EndPayload
-    
-}
-
 type ErrorPayload = {
     success:boolean,
     error:string
 }
 
-type Error = {
-    type: Register
-    payload:ErrorPayload
-}
-
-type Reset = {
-    type: Register
-}
-
 type RegisterThunkPayload = {
 
 }
-
-export type RegisterPayload = ErrorPayload | EndPayload

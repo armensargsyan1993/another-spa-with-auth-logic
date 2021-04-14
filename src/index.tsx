@@ -46,18 +46,6 @@ ReactDOM.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals();
 
-
-export type RootState = ReturnType<typeof rootReducer>
-
-export type ThunkType<T extends Action> = ThunkAction<
-Promise<void> | void,
-RootState,
-unknown,
-T>
-
-type PropertiesTypes<T> = T extends {[key:string]: infer U} ? U : never
-export type GetActionsTypes<T extends {[key:string]: (...args:any[])=>any}> = ReturnType<PropertiesTypes<T>> 
-
 // export type TestThunkType = ThunkAction<
 // Promise<void> | void,
 // RootState,

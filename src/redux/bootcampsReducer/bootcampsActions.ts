@@ -1,6 +1,5 @@
-import { GetActionsTypes } from '../../index';
-import { ThunkType } from "../.."
 import { requestAPI } from "../../api/requestMethod"
+import { GetActionsTypes, ThunkType } from "../../globalTypes";
 import { BootCampsTypes } from './types';
 
 

@@ -1,3 +1,4 @@
+import { LoginActionsTypes } from "./loginActions"
 import { LoginTypes } from "./types"
 
 const initialState = {
@@ -9,7 +10,7 @@ const initialState = {
     success:false,
 }
 
-export const loginReducer = (state:InitialState = initialState,action:):InitialState => {
+export const loginReducer = (state:InitialState = initialState,action:LoginActionsTypes):InitialState => {
     switch(action.type){
         case LoginTypes.START:
             return {

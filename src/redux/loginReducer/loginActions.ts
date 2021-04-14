@@ -1,11 +1,10 @@
 import { LogoutActionsTypes } from './../logoutReducer/logoutActions';
-import { GetActionsTypes } from './../../index';
-import { ThunkType } from "../.."
 import { requestAPI } from "../../api/requestMethod"
 import { authMeThunk } from "../authMeReducer/authMeActions"
 import { logoutActions } from "../logoutReducer/logoutActions"
 import { updateReset } from "../updateReducer/updateActions"
 import { LoginTypes } from "./types"
+import { GetActionsTypes, ThunkType } from '../../globalTypes';
 
 
 

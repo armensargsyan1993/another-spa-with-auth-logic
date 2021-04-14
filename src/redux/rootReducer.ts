@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { ThunkType } from "..";
+import { ThunkType } from "../globalTypes";
 import { authMeActions } from "./authMeReducer/authMeActions";
 import { authMeReducer } from "./authMeReducer/authMeReducer";
 import { bootCampsReducer } from "./bootCampsReducer/bootCampsReducer";
@@ -12,7 +12,7 @@ import { resetReducer } from "./resetReducer/resetReducer";
 import { updateReset } from "./updateReducer/updateActions";
 import { updateReducer } from "./updateReducer/updateReducer";
 
-const config = combineReducers({
+export const config = combineReducers({
     bootCamps:bootCampsReducer,
     register:registerReducer,
     login:loginReducer,
@@ -28,10 +28,7 @@ export const GLOBAL__TYPE__RESET = 'ROOT__REDUCER/GLOBAL__TYPE__RESET'
 const globalStateResetInRootReducer = ():Reset => {
     return {type:GLOBAL__TYPE__RESET}
 }
-
 const initialState = {}
-
-// type ActionType = GetActionsTypes<>
 
 export const rootReducer = (state:any,action:any):InitialState => {
 

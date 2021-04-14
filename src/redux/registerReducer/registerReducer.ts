@@ -1,5 +1,5 @@
-import { RegisterPayload } from './registerActions';
-import { Register, REGISTER__END, REGISTER__ERROR, REGISTER__PROCESS, REGISTER__RESET, REGISTER__START } from "./types"
+import { LogoutActionsTypes } from './registerActions';
+import { RegisterTypes } from './types';
 
 const initialState = {
     start:false,
@@ -9,20 +9,20 @@ const initialState = {
     success:false
 }
 
-export const registerReducer = (state:InitialState = initialState,action:Action):InitialState => {
+export const registerReducer = (state:InitialState = initialState,action:LogoutActionsTypes):InitialState => {
     switch(action.type){
-        case REGISTER__START:
+        case RegisterTypes.START:
             return {
                 ...state,
                 start:true,
                 end:false,
             }
-        case REGISTER__PROCESS:
+        case RegisterTypes.PROCESS:
             return {
                 ...state,
                 process:true,
             }
-        case REGISTER__END:
+        case RegisterTypes.END:
             return {
                 ...state,
                 start:false,
@@ -30,7 +30,7 @@ export const registerReducer = (state:InitialState = initialState,action:Action)
                 end:true,
                 ...action.payload
             }
-        case REGISTER__ERROR:
+        case RegisterTypes.ERROR:
             return {
                 ...state,
                 start:false,
@@ -38,7 +38,7 @@ export const registerReducer = (state:InitialState = initialState,action:Action)
                 end:false,
                 ...action.payload
             }
-        case REGISTER__RESET:
+        case RegisterTypes.RESET:
             return {
                 ...state,
                 start:false,
@@ -53,8 +53,3 @@ export const registerReducer = (state:InitialState = initialState,action:Action)
 }
 
 type InitialState = typeof initialState
-
-type Action = {
-    type: Register
-    payload:RegisterPayload
-}

@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { useHistory } from "react-router";
-import { RootState } from "../..";
-import { loginThunk, routeComplete } from "../../redux/loginReducer/loginActions";
-import { useTypedSelector } from "../customHooks";
+import { loginActions, loginThunk } from "../../redux/loginReducer/loginActions";
 import { CustomInput } from "../CustomInput/CustomInput";
 import { ForgotButton } from "../ForgotButton/ForgotButton";
+import { useSelector } from "../overrideHooks";
 import { SubmitButton } from "../SubmitButton/SubmitButton";
 import styles from './LoginForm.module.scss';
 
@@ -15,9 +14,8 @@ export const LoginForm = () => {
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch()
   const history = useHistory()
-  const success = useSelector((state:RootState) => state.login.success)
-  const isRouteCompile = useSelector((state:RootState) => state.login.isRouteComplete)
-  const xxx = useSelector((state:RootState) => state)
+  const success = useSelector(state => state.login.success)
+  const isRouteCompile = useSelector(state => state.login.isRouteComplete)
   const onSubmit = (data:any) => {
     dispatch(loginThunk(data))
   };
@@ -28,7 +26,7 @@ export const LoginForm = () => {
       history.push('/BrowseBootCamps')
     }
     return () => {
-      dispatch(routeComplete())
+      dispatch(loginActions.isComplete())
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[success,isRouteCompile])
