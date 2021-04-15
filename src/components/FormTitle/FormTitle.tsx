@@ -2,9 +2,9 @@ import React from 'react';
 import styles from "./FormTitle.module.scss";
 
 interface IFormTitleProps {
-  svgHref:string,
+  svgHref?:string,
   title:string,
-  text:string
+  text?:string
 }
 
 export const FormTitle:React.FC<IFormTitleProps> = ({svgHref, title, text}) => {

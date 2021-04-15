@@ -8,7 +8,7 @@ import { useSelector } from "../overrideHooks";
 import { SubmitButton } from "../SubmitButton/SubmitButton";
 import styles from './UpdateForm.module.scss';
 
-export const UpdateForm = () => {
+export const UpdateForm:React.FC = () => {
 
   const { register, handleSubmit, watch, errors } = useForm();
 

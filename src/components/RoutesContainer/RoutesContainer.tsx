@@ -12,7 +12,7 @@ import {Reset} from '../Reset/Reset'
 import styles from "./RoutesContainer.module.scss";
 
 
-export const RoutesContainer = () => {
+export const RoutesContainer:React.FC = () => {
   return (
     <div className={styles.root}>
       <Switch>

@@ -1,15 +1,30 @@
 import React from "react";
 import { Controller } from "react-hook-form";
 import Select, { components } from "react-select";
+import { ICustomSelectPayloadInner } from "../CustomSelectForm/CustomSelectForm";
 
-export const SelectCreator = ({
+interface IIconObject{
+  src: string,
+  id: string,
+  className: string,
+}
+
+interface ISelectFormProps{
+  dataName:string,
+  control:any,
+  className:string,
+  options:Array<ICustomSelectPayloadInner>,
+  iconObj:IIconObject,
+}
+
+export const SelectCreator:React.FC<ISelectFormProps> = ({
   dataName,
   control,
   className,
   options,
   iconObj,
 }) => {
-  const DropdownIndicator = (props) => {
+  const DropdownIndicator:React.FC<any> = (props) => {
     return (
       <div>
         <components.DropdownIndicator {...props}>

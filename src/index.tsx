@@ -31,7 +31,7 @@ ReactDOM.render(
     <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <BrowserRouter
-      // basename="/index.html/"
+      basename="myApp"
       >
         <App />
       </BrowserRouter>
