@@ -4,7 +4,7 @@ import { CustomPaginate } from '../CustomPaginate/CustomPaginate'
 import { CustomSelectForm } from '../CustomSelectForm/CustomSelectForm'
 import styles from './BootCamps.module.scss'
 
-export const BootCamps = () => {
+export const BootCamps:React.FC = () => {
 
     return (
         <section className={styles.root}>

@@ -10,8 +10,6 @@ import { SubmitButton } from '../SubmitButton/SubmitButton';
 import styles from './RegisterForm.module.scss';
 
 
-export type aaa = any
-
 export const RegisterForm:React.FC = () => {
 
     const { register, handleSubmit, watch, errors } = useForm();
@@ -33,11 +31,10 @@ export const RegisterForm:React.FC = () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[success])
 
+    
 
-    const onSubmit = (data:any) => {
-      data = Object.fromEntries(Object.entries(data).filter(e => {
-        return e[0] !== 'confirmPassword'
-      }))
+    const onSubmit = (data:IRegisterPayload) => {
+      delete data.confirmPassword
       dispatch(registerThunk(data))
     };
   
@@ -112,4 +109,13 @@ export const RegisterForm:React.FC = () => {
           </form>
       </>
     );
+}
+
+
+export interface IRegisterPayload {
+  name:string,
+  email:string,
+  password:string,
+  role:string,
+  confirmPassword?:string
 }

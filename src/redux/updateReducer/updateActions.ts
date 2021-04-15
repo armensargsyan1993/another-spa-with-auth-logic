@@ -1,3 +1,4 @@
+import { IUpdatePayload } from './../../components/UpdateForm/UpdateForm';
 import { requestAPI } from "../../api/requestMethod"
 import { GetActionsTypes, ThunkType } from "../../globalTypes"
 import { logoutThunk } from "../logoutReducer/logoutActions"
@@ -23,7 +24,7 @@ export const updateActions = {
 }
 export type UpdateActionsTypes = GetActionsTypes<typeof updateActions>
 
-export const updateThunk = (payload:UpdateThunkPayload):ThunkType<UpdateActionsTypes> => (dispatch) => {
+export const updateThunk = (payload:IUpdatePayload):ThunkType<UpdateActionsTypes> => (dispatch) => {
     dispatch(updateActions.start())
     dispatch(updateActions.process())
     requestAPI.updatePassword(payload)
@@ -40,15 +41,9 @@ export const updateThunk = (payload:UpdateThunkPayload):ThunkType<UpdateActionsT
 
 type EndPayload = {
     success:boolean,
-    data:[],
-    pagination:{}
 }
 
 type ErrorPayload = {
     success:boolean,
     error:string
-}
-
-type UpdateThunkPayload = {
-
 }

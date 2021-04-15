@@ -38,9 +38,9 @@ export const authMeThunk = ():ThunkType<AuthMeActionTypes> => (dispatch) => {
 
 type EndPayload = {
     success: boolean;
-    email: '';
-    name: '';
-    role: '';
+    email: string;
+    name: string;
+    role: string;
     
 }
 

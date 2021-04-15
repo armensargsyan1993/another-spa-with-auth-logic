@@ -26,8 +26,8 @@ export type BootCampsActionTypes = GetActionsTypes<typeof bootCampsActions>
 
 
 export const bootCampsThunk = ():ThunkType<BootCampsActionTypes> => (dispatch) => {
-    dispatch(bootCampsActions.start)
-    dispatch(bootCampsActions.process)
+    dispatch(bootCampsActions.start())
+    dispatch(bootCampsActions.process())
     requestAPI.getAllBootCamps()
     .then(data => {
         dispatch(bootCampsActions.end(data))
@@ -39,8 +39,12 @@ export const bootCampsThunk = ():ThunkType<BootCampsActionTypes> => (dispatch) =
 
 type EndPayload = {
     success:boolean,
-    data:[],
-    pagination:{}
+    data:Array<any>,
+    pagination:Pagination
+}
+
+export type Pagination = {
+
 }
 
 type ErrorPayload = {

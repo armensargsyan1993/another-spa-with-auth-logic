@@ -23,7 +23,6 @@ export const registerReducer = (state:InitialState = initialState,action:Registe
                 process:true,
             }
         case RegisterTypes.END:
-            debugger
             return {
                 ...state,
                 start:false,

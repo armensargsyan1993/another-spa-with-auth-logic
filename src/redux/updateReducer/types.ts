@@ -1,5 +1,3 @@
-
-
 export enum UpdaterTypes {
     START = 'UPDATE/UPDATE__START',
     PROCESS = 'UPDATE/UPDATE__PROCESS',

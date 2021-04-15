@@ -2,9 +2,16 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './CustomForm.module.scss';
 
-export const CustomForm = () => {
+interface ICustomFormSubmitData {
+  first:string
+  second:string
+}
+
+export const CustomForm:React.FC = () => {
     const { register, handleSubmit} = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = (data:ICustomFormSubmitData) => {
+      console.log(data);
+    };
 
     return (
       <div className={styles.root}>

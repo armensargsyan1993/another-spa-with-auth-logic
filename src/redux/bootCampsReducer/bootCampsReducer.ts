@@ -1,4 +1,5 @@
-import { BootCampsActionTypes } from "./bootCampsActions"
+import { BootCampsData, DataType } from "../../api/requestMethod"
+import { BootCampsActionTypes, Pagination } from "./bootCampsActions"
 import { BootCampsTypes } from "./types"
 
 const initialState = {
@@ -8,8 +9,8 @@ const initialState = {
     end:false,
     error:"",
     success:false,
-    data:[],
-    pagination:{}
+    data:[] as BootCampsData,
+    pagination:{} as Pagination
 }
 
 export const bootCampsReducer = (state:InitialState = initialState,action:BootCampsActionTypes):InitialState => {

@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { resetThunk } from "../../redux/resetReducer/resetActions";
 import { CustomInput } from "../CustomInput/CustomInput";
+import { useSelector } from "../overrideHooks";
 import { SubmitButton } from "../SubmitButton/SubmitButton";
 import styles from "./ResetForm.module.scss";
 
@@ -14,7 +15,7 @@ export const ResetForm = () => {
   const history = useHistory();
   const success = useSelector((state) => state.reset.success);
 
-  const onSubmit = (data) => {
+  const onSubmit = (data:IResetPayload) => {
     dispatch(resetThunk(data));
   };
 
@@ -51,3 +52,7 @@ export const ResetForm = () => {
     </>
   );
 };
+
+export interface IResetPayload {
+  email:string
+}

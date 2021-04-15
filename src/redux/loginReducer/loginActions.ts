@@ -1,3 +1,4 @@
+import { ILoginPayload } from './../../components/LoginForm/LoginForm';
 import { LogoutActionsTypes } from './../logoutReducer/logoutActions';
 import { requestAPI } from "../../api/requestMethod"
 import { authMeThunk } from "../authMeReducer/authMeActions"
@@ -32,14 +33,14 @@ export const loginActions = {
 
 export type LoginActionsTypes = GetActionsTypes<typeof loginActions>
 
-export const loginThunk = (payload:LoginThunkPayload):ThunkType<LoginActionsTypes | LogoutActionsTypes | UpdateActionsTypes> => (dispatch) => {
+export const loginThunk = (payload:ILoginPayload):ThunkType<LoginActionsTypes | LogoutActionsTypes | UpdateActionsTypes> => (dispatch) => {
     dispatch(loginActions.start())
     dispatch(loginActions.process())
     requestAPI.login(payload)
     .then(data => {
         dispatch(logoutActions.reset())
         dispatch(updateActions.reset())
-        dispatch(loginActions.end({success:data}))
+        dispatch(loginActions.end(data))
         dispatch(authMeThunk())
     })
     .catch(e => {
@@ -56,8 +57,4 @@ type EndPayload = {
 type ErrorPayload = {
     success:boolean,
     error:string
-}
-
-export type LoginThunkPayload = {
-    success:boolean
 }

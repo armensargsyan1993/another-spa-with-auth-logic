@@ -1,3 +1,4 @@
+import { IRegisterPayload } from './../../components/RegisterForm/RegisterForm';
 import { requestAPI } from "../../api/requestMethod"
 import { GetActionsTypes, ThunkType } from "../../globalTypes"
 import { RegisterTypes } from "./types"
@@ -25,7 +26,7 @@ export const registerActions = {
 }
 export type RegisterActionsTypes = GetActionsTypes<typeof registerActions>
 
-export const registerThunk = (payload:RegisterThunkPayload):ThunkType<RegisterActionsTypes> => async(dispatch) => {
+export const registerThunk = (payload:IRegisterPayload):ThunkType<RegisterActionsTypes> => async(dispatch) => {
     dispatch(registerActions.start())
     dispatch(registerActions.process())
     requestAPI.register(payload)
@@ -44,8 +45,4 @@ type EndPayload = {
 type ErrorPayload = {
     success:boolean,
     error:string
-}
-
-type RegisterThunkPayload = {
-
 }

@@ -1,3 +1,4 @@
+import { IResetPayload } from './../../components/ResetForm/ResetForm';
 import { requestAPI } from "../../api/requestMethod"
 import { GetActionsTypes, ThunkType } from "../../globalTypes"
 import { loginActions, LoginActionsTypes } from "../loginReducer/loginActions"
@@ -25,7 +26,7 @@ export type ResetActionsTypes = GetActionsTypes<typeof resetActions>
 
 
 
-export const resetThunk = (payload:ResetThunkPayload):ThunkType<ResetActionsTypes | LoginActionsTypes> => (dispatch) => {
+export const resetThunk = (payload:IResetPayload):ThunkType<ResetActionsTypes | LoginActionsTypes> => (dispatch) => {
 
     dispatch(resetActions.start())
     dispatch(resetActions.process())
@@ -45,15 +46,9 @@ export const resetThunk = (payload:ResetThunkPayload):ThunkType<ResetActionsType
 
 type EndPayload = {
     success:boolean,
-    data:[],
-    pagination:{}
 }
 
 type ErrorPayload = {
     success:boolean,
     error:string
-}
-
-type ResetThunkPayload = {
-
 }

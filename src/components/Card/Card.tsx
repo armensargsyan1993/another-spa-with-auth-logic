@@ -1,10 +1,18 @@
-import React from 'react';
-import styles from './Card.module.scss';
+import React from "react";
+import styles from "./Card.module.scss";
 
-// export const Card = ({src,title,subTitle,text,rate,alt}) => {
-export const Card = ({ src, name, address, careers, rate, alt }) => {
+interface ICardProps {
+  src?:string
+  name?:string
+  address?:string
+  careers?:Array<string>
+  rate?:number | string
+  alt?:string,
+  key:string | number
+}
+export const Card:React.FC<ICardProps> = ({ key,src, name, address, careers, rate, alt }) => {
   return (
-    <div className={styles.root}>
+    <div key={key} className={styles.root}>
       <div className={styles.img}>
         <img src={src || ""} alt={alt || "api doesn't give photo"} />
       </div>
@@ -14,7 +22,8 @@ export const Card = ({ src, name, address, careers, rate, alt }) => {
           <span>{address || "Boston, MA"}</span>
         </div>
         <p className={styles.text}>
-          {careers?.slice().join(' ') || "Web Development, UI/UX, Mobile Development"}
+          {careers?.slice().join(" ") ||
+            "Web Development, UI/UX, Mobile Development"}
         </p>
       </div>
       <div className={styles.rate}>

@@ -18,7 +18,9 @@ export const LoginForm:React.FC = () => {
   const isRouteCompile = useSelector(state => state.login.isRouteComplete)
   console.log(success)
   console.log(isRouteCompile)
-  const onSubmit = (data:any) => {
+
+
+  const onSubmit = (data:ILoginPayload) => {
     dispatch(loginThunk(data))
   };
 
@@ -69,3 +71,9 @@ export const LoginForm:React.FC = () => {
     </>
   );
 };
+
+
+export interface ILoginPayload{
+  password:string,
+  email:string
+}

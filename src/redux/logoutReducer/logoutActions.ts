@@ -31,7 +31,7 @@ export const logoutThunk = ():ThunkType<LogoutActionsTypes> => (dispatch) => {
     requestAPI.logout()
     .then(data => {
         dispatch(globalStateResetInRootReducerThunk())
-        dispatch(logoutActions.end(data.success))
+        dispatch(logoutActions.end(data))
     })
     .catch(e => {
         dispatch(logoutActions.error(e.response.data))
@@ -41,8 +41,6 @@ export const logoutThunk = ():ThunkType<LogoutActionsTypes> => (dispatch) => {
 
 type EndPayload = {
     success:boolean,
-    data:[],
-    pagination:{}
 }
 
 type ErrorPayload = {
