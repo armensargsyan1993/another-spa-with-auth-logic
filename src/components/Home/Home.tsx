@@ -2,7 +2,7 @@ import React from 'react'
 import { CustomForm } from '../CustomForm/CustomForm'
 import styles from './Home.module.scss'
 
-export const Home = () => {
+export const Home:React.FC = () => {
     return (
         <section className={styles.root}>
             <div className="container">

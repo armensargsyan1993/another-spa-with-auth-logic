@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate'
 import { useDispatch } from 'react-redux'
-import { BootCampsData } from '../../api/requestMethod'
 import img1 from '../../pictures/image_1.jpg'
 import img2 from '../../pictures/image_2.jpg'
 import img3 from '../../pictures/image_3.jpg'

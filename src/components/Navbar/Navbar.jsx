@@ -1,10 +1,11 @@
 import React from 'react'
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { logoutThunk } from '../../redux/logoutReducer/logoutActions'
 import { icons } from '../icons'
 import { NavLinkCreator } from '../NavLinkCreator/NavLinkCreator'
+import { useSelector } from '../overrideHooks'
 import { SvgCreator } from '../SvgCreator/SvgCreator'
 import styles from './Navbar.module.scss'
 
@@ -13,6 +14,7 @@ export const Navbar = () => {
     
     const successLogin = useSelector(state => state.login.success)
     const successLogout = useSelector(state => state.logout.success)
+    const username = useSelector(state => state.authMe.name)
     const dispatch = useDispatch()
     
     const handleChange = () => {
@@ -27,7 +29,7 @@ export const Navbar = () => {
     let queryArr = successLogin && !successLogout ? 
     [
         {linkName:'Update Password'},
-        {linkName: localStorage.getItem('userEmail') || 'Account',svgHref:`${icons.account}#accountLogo`},
+        {linkName: username || 'Account',svgHref:`${icons.account}#accountLogo`},
         [<Dropdown key="dropDown" options={options} onChange={handleChange} value={defaultOption} placeholder="Select an option" />]
     ] : 
     [

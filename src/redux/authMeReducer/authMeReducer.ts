@@ -34,6 +34,7 @@ export const authMeReducer = (state:InitialState = initialState,action:AuthMeAct
                 start:false,
                 process:false,
                 end:true,
+                error:'',
                 ...action.payload
             }
         case AuthMeTypes.ERROR:

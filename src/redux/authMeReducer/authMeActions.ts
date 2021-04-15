@@ -28,10 +28,11 @@ export const authMeThunk = ():ThunkType<AuthMeActionTypes> => (dispatch) => {
     dispatch(authMeActions.process())
     requestAPI.authMe()
     .then(data => {
+        console.warn(`xxxxxxxxxxxxxxx`)
         dispatch(authMeActions.end(data))
     })
     .catch(e => {
-        dispatch(authMeActions.error(e.response.data))
+        dispatch(authMeActions.error(e))
     })
 }
 

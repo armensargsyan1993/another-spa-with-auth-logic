@@ -29,9 +29,6 @@ import { IUpdatePayload } from '../components/UpdateForm/UpdateForm';
 
 const baseUrl2 = `https://jsonplaceholder.typicode.com/posts/`
 
-interface IBootCampsData {
-
-}
 
 type DataType = typeof getAllBootCampsData
 export type BootCampsData = typeof getAllBootCampsData.data
@@ -96,7 +93,13 @@ const logout = () => {
 }
 
 const authMe = () => {
-    
+    if(!localStorage.getItem('token')){
+        console.warn(`object`)
+        return Promise.reject({
+            error: "Not authorized to access this route",
+            success: false
+        })
+    }
     return axios.get(baseUrl2)
     .then(res => {
         //return res.data

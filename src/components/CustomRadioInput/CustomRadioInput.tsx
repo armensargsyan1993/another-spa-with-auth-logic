@@ -2,7 +2,7 @@ import React from 'react'
 import { MY__CUSTOM__ERROR__CLASS__NAME } from '../globalConstants'
 import styles from './CustomRadioInput.module.scss'
 
-interface ICustomRadioInputTypes{ 
+interface ICustomRadioInputProps{ 
     required:boolean, 
     errors:any, 
     title:string, 
@@ -18,7 +18,7 @@ interface IRadios {
 }
 
 
-export const CustomRadioInput:React.FC<ICustomRadioInputTypes> = ({ required = false, errors, title, register, name, clsName, radios }) => {
+export const CustomRadioInput:React.FC<ICustomRadioInputProps> = ({ required = false, errors, title, register, name, clsName, radios }) => {
     return (
         <div className={`${styles.root} ${name && errors && errors[name] && MY__CUSTOM__ERROR__CLASS__NAME }`}>
             <h3 className={styles.title}>{title}</h3>

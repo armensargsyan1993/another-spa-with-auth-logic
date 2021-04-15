@@ -24,6 +24,7 @@ export const SelectCreator = ({
     <Controller
       name={dataName}
       control={control}
+      defaultValue={options[0]}
       as={
         <Select
           defaultValue={options[0]}

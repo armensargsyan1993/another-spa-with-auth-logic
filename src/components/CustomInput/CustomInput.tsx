@@ -4,7 +4,7 @@ import styles from './CustomInput.module.scss';
 
 //TODO refactoring logic
 
-export const CustomInput:React.FC<CustomInputTypes> = ({ refForMatch, errors, required = false, autocomplete, text, register, name, placeholder, type, clsName }) => {
+export const CustomInput:React.FC<ICustomInputProps> = ({ refForMatch, errors, required = false, autocomplete, text, register, name, placeholder, type, clsName }) => {
   return (
    <div className={styles.root}>
      {text && <span className={styles.span}>{text}</span>}
@@ -25,7 +25,7 @@ export const CustomInput:React.FC<CustomInputTypes> = ({ refForMatch, errors, re
   );
 };
 
-interface CustomInputTypes{ 
+interface ICustomInputProps{ 
   refForMatch?:any,
   errors:any, 
   required?:boolean, 

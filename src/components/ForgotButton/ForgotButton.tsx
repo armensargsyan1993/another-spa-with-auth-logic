@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './ForgotButton.module.scss'
 
-export const ForgotButton = () => {
+export const ForgotButton:React.FC = () => {
     return (
         
         <div className={styles.forgotButtonContainer}>

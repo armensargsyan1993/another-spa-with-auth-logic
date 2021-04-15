@@ -1,4 +1,4 @@
-import { BootCampsData, DataType } from "../../api/requestMethod"
+import { BootCampsData } from "../../api/requestMethod"
 import { BootCampsActionTypes, Pagination } from "./bootCampsActions"
 import { BootCampsTypes } from "./types"
 

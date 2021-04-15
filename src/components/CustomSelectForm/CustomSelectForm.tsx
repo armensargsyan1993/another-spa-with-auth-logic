@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import arrows from "../../icons/arrows.svg";
 import { SelectCreator } from "../SelectCreator/SelectCreator";
 import { SubmitButton } from "../SubmitButton/SubmitButton";
 import styles from "./CustomSelectForm.module.scss";
 
-export const CustomSelectForm = () => {
+interface ICustomSelectPayloadInner{
+  value:string,
+  label:string
+}
+
+export interface ICustomSelectPayload{
+  ratingSelect:ICustomSelectPayloadInner
+  budgetSelect:ICustomSelectPayloadInner
+}
+
+export const CustomSelectForm:React.FC = () => {
   const { control, handleSubmit } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = (data:ICustomSelectPayload) => {
     // console.warn(data)
   };
 
