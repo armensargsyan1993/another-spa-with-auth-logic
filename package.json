@@ -29,7 +29,6 @@
     "@types/axios": "^0.14.0",
     "@types/gh-pages": "^3.0.0",
     "@types/node-sass": "^4.11.1",
-    "@types/npm": "^2.0.31",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "@types/react-paginate": "^6.2.1",
@@ -41,16 +40,16 @@
     "@types/redux-persist": "^4.3.1",
     "@types/redux-thunk": "^2.1.0",
     "@types/typescript": "^2.0.0",
-    "gh-pages": "^3.1.0",
-    "i": "^0.3.6",
-    "npm": "^7.9.0"
+    "gh-pages": "^3.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "dep":"npm run predeploy && npm run deploy"
   },
   "eslintConfig": {
     "extends": [
