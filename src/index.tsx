@@ -31,7 +31,7 @@ ReactDOM.render(
     <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <BrowserRouter
-      basename="/another-spa-with-auth-logic/"
+      basename="another-spa-with-auth-logic"
       >
         <App />
       </BrowserRouter>
