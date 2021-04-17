@@ -1,7 +1,7 @@
 import React from "react";
 import { icons } from "../../assets";
 import { FormTitle } from "../../FormTitle/FormTitle";
-import { LoginForm } from "../LoginForm/LoginForm";
+import { LoginForm } from "../../LoginForm/LoginForm";
 import styles from "./Login.module.scss";
 
 

@@ -1,6 +1,6 @@
 import React from "react";
-import { FormTitle } from "../FormTitle/FormTitle";
-import { ResetForm } from "../ResetForm/ResetForm";
+import { FormTitle } from "../../FormTitle/FormTitle";
+import { ResetForm } from "../../ResetForm/ResetForm";
 import styles from "./Reset.module.scss";
 
 

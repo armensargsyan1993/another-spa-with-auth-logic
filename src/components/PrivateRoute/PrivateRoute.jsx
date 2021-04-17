@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
-import { Update } from '../Update/Update'
+import { Update } from '../pages/Update/Update'
 import styles from './PrivateRoute.module.scss'
 
 export const PrivateRoute = () => {
