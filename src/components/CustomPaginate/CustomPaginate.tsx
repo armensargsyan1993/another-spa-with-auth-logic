@@ -6,10 +6,13 @@ import {pictures} from '../assets'
 import { bootCampsThunk } from '../../redux/bootCampsReducer/bootCampsActions'
 import { Card } from '../Card/Card'
 import { useSelector } from '../overrideHooks'
+import styles from './CustomPaginate.module.scss'
 
 interface CustomPaginateHandlePageClick{
     selected:number
 }
+
+//TODO delete fake page count 55 
 
 export const CustomPaginate:React.FC = () => {
     
@@ -36,7 +39,7 @@ export const CustomPaginate:React.FC = () => {
     const pageCount = Math.ceil(data.length / PER_PAGE);
 
     return (
-            <div className="testingPaginate">
+            <div className={styles.root}>
                 {!data.length && Object.keys(pictures).map((e,i) => {
                     return <Card key={i} src={e}/>
                 })}
@@ -44,13 +47,13 @@ export const CustomPaginate:React.FC = () => {
                 <ReactPaginate
                     previousLabel={"prev"}
                     nextLabel={"next"}
-                    pageCount={pageCount || 1}
+                    pageCount={55 || pageCount || 1}
                     onPageChange={handlePageClick}
-                    containerClassName={"pagination"}
-                    previousLinkClassName={"pagination__link"}
-                    nextLinkClassName={"pagination__link"}
-                    disabledClassName={"pagination__link--disabled"}
-                    activeClassName={"pagination__link--active"}
+                    containerClassName={styles.pagination}
+                    previousLinkClassName={styles.prev}
+                    nextLinkClassName={styles.next}
+                    disabledClassName={styles.disabled}
+                    activeClassName={styles.active}
                     pageRangeDisplayed={5}
                     marginPagesDisplayed={3}
                     breakLabel={'...'}

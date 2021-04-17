@@ -1,0 +1,75 @@
+@import '../global.scss';
+.root{
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    .pagination{
+        display: flex;
+        margin:auto 0 0 0;
+        max-width: 400px;
+        li{
+            border: 1px solid $brdClr;
+            height: 38px;
+            width: 100%;
+            a{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              width: 100%;
+              height: 100%;
+              color: $bgclr;
+              cursor: pointer;
+            }
+        }
+        .prev,.next{
+            min-width: 86px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $txtClr;
+            height: 100%;
+            color: $bgclr;
+            background-color: $spanBgClr;
+            font-weight: bold;
+        }
+        .disabled{
+            a{
+                background-color: white;
+            }
+        }
+        .active{
+            a{
+                color: white;
+            }
+            background-color: $bgclr;
+        }
+    }
+}
+
+
+// li{
+//     border: 1px solid $brdClr;
+//     width: 35px;
+//     height: 38px;
+//     display: block !important;
+//     a{
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       text-align: center;
+//       width: 100%;
+//       height: 100%;
+//       color: $bgclr;
+//       cursor: pointer;
+//     }
+//   }
+//   .next:not(.pagination__link--disabled),.previous:not(.pagination__link--disabled){
+//     background-color: $bgclr;
+//   }
+//   .next.pagination__link--disabled,.previous.pagination__link--disabled{
+//     a{
+//       color: $cardTxtClr;
+//     }
+//   }
