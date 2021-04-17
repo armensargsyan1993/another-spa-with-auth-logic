@@ -4,7 +4,6 @@ import { FormTitle } from '../../FormTitle/FormTitle'
 import { RegisterForm } from '../../RegisterForm/RegisterForm'
 
 import styles from './Register.module.scss'
-
 export const Register = () => {
     return (
         <div className={styles.root}>

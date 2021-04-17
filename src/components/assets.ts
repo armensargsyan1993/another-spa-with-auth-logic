@@ -13,7 +13,7 @@ import image_4 from '../assets/pictures/image_4.jpg'
 import showcase from '../assets/pictures/showcase.jpg'
 
 
-export const icons:IIconsAndPictures = {
+export const icons:IIcons = {
     login,
     register,
     computer,
@@ -22,7 +22,7 @@ export const icons:IIconsAndPictures = {
     bottomArrow,
 }
 
-export const pictures:IIconsAndPictures = {
+export const pictures:IPictures = {
     bg,
     image_1,
     image_2,
@@ -31,6 +31,20 @@ export const pictures:IIconsAndPictures = {
     showcase
 }
 
-interface IIconsAndPictures{
-    [key:string]:string
+interface IIcons {
+    login:string,
+    register:string,
+    computer:string,
+    arrows:string,
+    account:string,
+    bottomArrow:string,
+}
+
+interface IPictures {
+    bg:string,
+    image_1:string,
+    image_2:string,
+    image_3:string,
+    image_4:string,
+    showcase:string
 }
