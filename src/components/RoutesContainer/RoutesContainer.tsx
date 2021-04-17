@@ -2,14 +2,14 @@ import React from "react";
 import { Redirect, Route, Switch } from "react-router";
 
 import {ErrorBoundary} from '../ErrorBoundary/ErrorBoundary'
-import {BootCamps} from '../BootCamps/BootCamps'
-import {Login} from '../Login/Login'
-import {Home} from '../Home/Home'
-import {Register} from '../Register/Register'
-import {PrivateRoute} from '../PrivateRoute/PrivateRoute'
-import {Reset} from '../Reset/Reset'
+import {BootCamps} from '../pages/BootCamps/BootCamps'
 
 import styles from "./RoutesContainer.module.scss";
+import { Login } from "../pages/Login/Login";
+import { Home } from "../pages/Home/Home";
+import { Register } from "../pages/Register/Register";
+import { PrivateRoute } from "../PrivateRoute/PrivateRoute";
+import { Reset } from "../pages/Reset/Reset";
 
 
 export const RoutesContainer:React.FC = () => {

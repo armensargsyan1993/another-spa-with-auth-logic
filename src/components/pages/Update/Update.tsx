@@ -1,6 +1,6 @@
 import React from "react";
-import { FormTitle } from "../FormTitle/FormTitle";
-import { UpdateForm } from "../UpdateForm/UpdateForm";
+import { FormTitle } from "../../FormTitle/FormTitle";
+import { UpdateForm } from "../../UpdateForm/UpdateForm";
 import styles from "./Update.module.scss";
 
 

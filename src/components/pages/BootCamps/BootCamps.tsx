@@ -1,7 +1,7 @@
 import React from 'react'
-import { CustomForm } from '../CustomForm/CustomForm'
-import { CustomPaginate } from '../CustomPaginate/CustomPaginate'
-import { CustomSelectForm } from '../CustomSelectForm/CustomSelectForm'
+import { CustomForm } from '../../CustomForm/CustomForm'
+import { CustomPaginate } from '../../CustomPaginate/CustomPaginate'
+import { CustomSelectForm } from '../../CustomSelectForm/CustomSelectForm'
 import styles from './BootCamps.module.scss'
 
 export const BootCamps:React.FC = () => {

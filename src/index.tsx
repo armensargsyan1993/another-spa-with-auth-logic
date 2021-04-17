@@ -2,29 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { applyMiddleware, createStore } from 'redux';
-import logger from 'redux-logger';
-//add localStorage
-import { persistReducer, persistStore } from 'redux-persist';
-import { PersistGate } from 'redux-persist/integration/react';
-import storage from 'redux-persist/lib/storage';
-import thunk from 'redux-thunk';
 import {App} from './App';
 import './index.scss';
-import { rootReducer } from './redux/rootReducer';
-
-const persistConfig = {
-  key: 'root',
-  storage,
-}
-
-const persistedReducer = persistReducer(persistConfig, rootReducer)
-
-let store = createStore(persistedReducer,applyMiddleware(
-  thunk,
-  logger,
-))
-let persistor = persistStore(store)
+import { persistor, store } from './redux/store';
+import {PersistGate} from 'redux-persist/integration/react';
 
 ReactDOM.render(
   <React.StrictMode>

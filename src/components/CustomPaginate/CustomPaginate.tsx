@@ -2,10 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate'
 import { useDispatch } from 'react-redux'
-import img1 from '../../pictures/image_1.jpg'
-import img2 from '../../pictures/image_2.jpg'
-import img3 from '../../pictures/image_3.jpg'
-import img4 from '../../pictures/image_4.jpg'
+import {pictures} from '../assets'
 import { bootCampsThunk } from '../../redux/bootCampsReducer/bootCampsActions'
 import { Card } from '../Card/Card'
 import { useSelector } from '../overrideHooks'
@@ -16,7 +13,6 @@ interface CustomPaginateHandlePageClick{
 
 export const CustomPaginate:React.FC = () => {
     
-    const imgArr:Array<string> = [img1,img2,img3,img4]
     const [currentPage, setCurrentPage] = useState(0);
     const {data} = useSelector(state => state.bootCamps)
     
@@ -41,7 +37,7 @@ export const CustomPaginate:React.FC = () => {
 
     return (
             <div className="testingPaginate">
-                {!data.length && imgArr.map((e,i) => {
+                {!data.length && Object.keys(pictures).map((e,i) => {
                     return <Card key={i} src={e}/>
                 })}
                 {currentPageData?.map((e) => <Card key={e.id} address = {e.address} name={e.name} careers={e.careers}/>)}

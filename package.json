@@ -37,7 +37,6 @@
     "@types/react-select": "^4.0.14",
     "@types/redux": "^3.6.0",
     "@types/redux-logger": "^3.0.8",
-    "@types/redux-persist": "^4.3.1",
     "@types/redux-thunk": "^2.1.0",
     "@types/typescript": "^2.0.0",
     "gh-pages": "^3.1.0"
@@ -49,7 +48,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "dep":"npm run predeploy && npm run deploy"
+    "dep": "npm run predeploy && npm run deploy"
   },
   "eslintConfig": {
     "extends": [

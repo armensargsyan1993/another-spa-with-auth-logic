@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import arrows from "../../icons/arrows.svg";
+import {icons} from '../assets'
 import { SelectCreator } from "../SelectCreator/SelectCreator";
 import { SubmitButton } from "../SubmitButton/SubmitButton";
 import styles from "./CustomSelectForm.module.scss";
@@ -32,7 +32,7 @@ export const CustomSelectForm:React.FC = () => {
     { value: '5', label: 'f' }
   ]
   const iconObj = {
-    src: arrows,
+    src: icons.arrows,
     id: "arrow",
     className: styles.arrow,
   };

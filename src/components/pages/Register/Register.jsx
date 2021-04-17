@@ -1,7 +1,7 @@
 import React from 'react'
-import { FormTitle } from '../FormTitle/FormTitle'
+import { FormTitle } from '../../FormTitle/FormTitle'
+import { RegisterForm } from '../../RegisterForm/RegisterForm'
 import { icons } from '../icons'
-import { RegisterForm } from '../RegisterForm/RegisterForm'
 import styles from './Register.module.scss'
 
 export const Register = () => {
